@@ -20,7 +20,15 @@ export class HeroesService {
   getSugerencias( termino :string) : Observable<Heroe[]>{
     return this.http.get<Heroe[]>(`${this.url}/heroes?q=${termino}&_limit=5`)
   }
-
+  agregarHeroe(heroe : Heroe) : Observable<Heroe>{
+    return this.http.post<Heroe>(`${this.url}/heroes`,heroe)
+  }
+  actualizarHeroe(heroe : Heroe) : Observable<Heroe>{
+    return this.http.put<Heroe>(`${this.url}/heroes/${heroe.id}`,heroe)
+  }
+  borrarHeroe(id : string) : Observable<any>{
+    return this.http.delete<any>(`${this.url}/heroes/${id}`)
+  }
 
 
 }
